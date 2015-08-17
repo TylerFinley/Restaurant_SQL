@@ -21,4 +21,10 @@ describe(Restaurant) do
       expect(restaurant.phone()).to(eq('1234567'))
     end
   end
+
+  describe(".all") do
+    it('returns all restaurant instances') do
+      expect(Restaurant.all()).to(eq([]))
+    end
+  end
 end
