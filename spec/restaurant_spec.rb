@@ -27,4 +27,20 @@ describe(Restaurant) do
       expect(Restaurant.all()).to(eq([]))
     end
   end
+
+  describe('#save') do
+    it('adds a restaurant to the array of saved restaurants') do
+      restaurant = Restaurant.new({:name => 'Chipotle', :location => 'denver', :phone => '1234567'})
+      restaurant.save()
+      expect(Restaurant.all()).to(eq([restaurant]))
+    end
+  end
+
+  describe('#==') do
+    it('returns true if same name, location and phone') do
+      restaurant1 = Restaurant.new({:name => 'Chipotle', :location => 'denver', :phone => '1234567'})
+      restaurant2 = Restaurant.new({:name => 'Chipotle', :location => 'denver', :phone => '1234567'})
+      expect(restaurant1).to(eq(restaurant2))
+    end
+  end
 end

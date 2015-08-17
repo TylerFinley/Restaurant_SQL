@@ -18,4 +18,15 @@ class Restaurant
     end
     restaurants
   end
+
+  define_method(:save) do
+    DB.exec("INSERT INTO restaurants (name, location, phone) VALUES ('#{name}', '#{location}', '#{phone}');")
+  end
+
+  define_method(:==) do |other|
+    same_name = self.name().eql?(other.name())
+    same_location = self.location().eql?(other.location())
+    same_phone = self.phone().eql?(other.phone())
+    same_name.&(same_location).&(same_phone)
+  end
 end
